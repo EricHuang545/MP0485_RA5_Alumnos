@@ -61,9 +61,10 @@ public class RegistroAlumno {
     }
 
     public static void mostrar(File registro) throws FileNotFoundException, IOException {
-        FileReader fr = new FileReader(registro);
-        BufferedReader br = new BufferedReader(fr);
         try {
+            FileReader fr = new FileReader(registro);
+            BufferedReader br = new BufferedReader(fr);
+
             String linea;
             while ((linea = br.readLine()) != null) {
                 System.out.println(linea);
@@ -76,10 +77,10 @@ public class RegistroAlumno {
     }
 
     public static void eliminar(File registro) throws FileNotFoundException, IOException {
-        FileReader fr = new FileReader(registro);
-        BufferedReader br = new BufferedReader(fr);
-
         try {
+            FileReader fr = new FileReader(registro);
+            BufferedReader br = new BufferedReader(fr);
+
             System.out.print("Introduce el DNI: ");
             String dni = sc.nextLine();
 
@@ -107,11 +108,12 @@ public class RegistroAlumno {
     }
 
     public static void buscarPorDni(File registro) throws FileNotFoundException, IOException {
-        FileReader fr = new FileReader(registro);
-        BufferedReader br = new BufferedReader(fr);
-        String linea;
-
         try {
+
+            FileReader fr = new FileReader(registro);
+            BufferedReader br = new BufferedReader(fr);
+            String linea;
+
             System.out.print("Introduce el DNI: ");
             String dni = sc.nextLine();
             while ((linea = br.readLine()) != null) {
