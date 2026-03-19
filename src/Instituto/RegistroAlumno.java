@@ -22,7 +22,7 @@ public class RegistroAlumno {
 
     static Scanner sc = new Scanner(System.in);
 
-    static void registrar(File registro) throws IOException {
+    static void registrar(File registro){
         try {
             FileWriter fw = new FileWriter(registro, true);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -60,7 +60,7 @@ public class RegistroAlumno {
         }
     }
 
-    public static void mostrar(File registro) throws FileNotFoundException, IOException {
+    public static void mostrar(File registro){
         try {
             FileReader fr = new FileReader(registro);
             BufferedReader br = new BufferedReader(fr);
@@ -76,7 +76,7 @@ public class RegistroAlumno {
 
     }
 
-    public static void eliminar(File registro) throws FileNotFoundException, IOException {
+    public static void eliminar(File registro){
         try {
             FileReader fr = new FileReader(registro);
             BufferedReader br = new BufferedReader(fr);
@@ -107,7 +107,7 @@ public class RegistroAlumno {
 
     }
 
-    public static void buscarPorDni(File registro) throws FileNotFoundException, IOException {
+    public static void buscarPorDni(File registro){
         try {
 
             FileReader fr = new FileReader(registro);
@@ -127,20 +127,25 @@ public class RegistroAlumno {
         }
     }
 
-    public static boolean checkDni(String dni, File registro) throws FileNotFoundException, IOException {
-        FileReader fr = new FileReader(registro);
-        BufferedReader br = new BufferedReader(fr);
+    public static boolean checkDni(String dni, File registro){
+        try{
+            FileReader fr = new FileReader(registro);
+            BufferedReader br = new BufferedReader(fr);
 
-        String linea;
+            String linea;
 
-        while ((linea = br.readLine()) != null) {
-            if (linea.contains(dni)) {
-                br.close();
-                return false;
+            while ((linea = br.readLine()) != null) {
+                if (linea.contains(dni)) {
+                    br.close();
+                    return false;
+                }
             }
-        }
 
-        br.close();
+            br.close();
+        } catch (IOException e) {
+            System.out.println("Error");
+        }
+        
         return true;
     }
 }

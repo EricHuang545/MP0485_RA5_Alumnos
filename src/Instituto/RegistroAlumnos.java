@@ -23,7 +23,7 @@ public class RegistroAlumnos {
 
         String src = rutaAbsoluta + separator + "src";
         String carpeta = src + separator + "registroAlumno";
-        
+
         File carpetaNueva = new File(carpeta);
 
         if (!(carpetaNueva.exists())) {
@@ -35,26 +35,31 @@ public class RegistroAlumnos {
         }
     }
 
-    public static void main(String[] args) throws IOException {
-        start();
-        int opc;
-        do {
-            opc = menu();
-            switch (opc) {
-                case 1:
-                    RegistroAlumno.registrar(registro);
-                    break;
-                case 2:
-                    RegistroAlumno.mostrar(registro);
-                    break;
-                case 3:
-                    RegistroAlumno.eliminar(registro);
-                    break;
-                case 4:
-                    RegistroAlumno.buscarPorDni(registro);
-                    break;
-            }
-        } while (opc != 5);
+    public static void main(String[] args) {
+        try {
+            start();
+            int opc;
+            do {
+                opc = menu();
+                switch (opc) {
+                    case 1:
+                        RegistroAlumno.registrar(registro);
+                        break;
+                    case 2:
+                        RegistroAlumno.mostrar(registro);
+                        break;
+                    case 3:
+                        RegistroAlumno.eliminar(registro);
+                        break;
+                    case 4:
+                        RegistroAlumno.buscarPorDni(registro);
+                        break;
+                }
+            } while (opc != 5);
+        } catch (IOException e) {
+            System.out.println("Error");
+        }
+
     }
 
     public static int menu() {
