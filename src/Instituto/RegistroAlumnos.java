@@ -17,26 +17,30 @@ public class RegistroAlumnos {
     static Scanner sc = new Scanner(System.in);
     public static File registro;
 
-    public static void start() throws IOException {
-        String rutaAbsoluta = System.getProperty("user.dir");
-        String separator = File.separator;
+    public static void start() {
+        try {
+            String rutaAbsoluta = System.getProperty("user.dir");
+            String separator = File.separator;
 
-        String src = rutaAbsoluta + separator + "src";
-        String carpeta = src + separator + "registroAlumno";
+            String src = rutaAbsoluta + separator + "src";
+            String carpeta = src + separator + "registroAlumno";
 
-        File carpetaNueva = new File(carpeta);
+            File carpetaNueva = new File(carpeta);
 
-        if (!(carpetaNueva.exists())) {
-            carpetaNueva.mkdir();
+            if (!(carpetaNueva.exists())) {
+                carpetaNueva.mkdir();
+            }
+            registro = new File(carpetaNueva + separator + "registro.txt");
+            if (!(registro.exists())) {
+                registro.createNewFile();
+            }
+        } catch (IOException e) {
+            System.out.println("Error");
         }
-        registro = new File(carpetaNueva + separator + "registro.txt");
-        if (!(registro.exists())) {
-            registro.createNewFile();
-        }
+
     }
 
     public static void main(String[] args) {
-        try {
             start();
             int opc;
             do {
@@ -56,9 +60,6 @@ public class RegistroAlumnos {
                         break;
                 }
             } while (opc != 5);
-        } catch (IOException e) {
-            System.out.println("Error");
-        }
 
     }
 
